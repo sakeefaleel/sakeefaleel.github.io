@@ -1,1 +1,14 @@
-const menu=document.getElementById('menu');const links=document.getElementById('links');menu?.addEventListener('click',()=>links.classList.toggle('open'));links?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));document.getElementById('year').textContent=new Date().getFullYear();
+const toggle = document.querySelector(".menu-toggle");
+const links = document.querySelector(".nav-links");
+if (toggle && links) {
+  toggle.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  links.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+    links.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }));
+}
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
